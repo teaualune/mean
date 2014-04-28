@@ -16,6 +16,11 @@ module.exports = function() {
 		User.findOne({
 			_id: id
 		}, '-salt -password', function(err, user) {
+	        // Invoking user policies
+	        config.getGlobbedFiles('./app/policies/**/*.js').forEach(function(policyPath) {
+	            require(path.resolve(policyPath)).invokeUserRolesPolicies(user);
+	        }); 
+
 			done(err, user);
 		});
 	});

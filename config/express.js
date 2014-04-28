@@ -109,6 +109,11 @@ module.exports = function(db) {
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
 
+	// Globbing policy files
+	config.getGlobbedFiles('./app/policies/**/*.js').forEach(function(policyPath) {
+		require(path.resolve(policyPath)).invokeRolesPolicies();
+	});
+
 	// Globbing routing files
 	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
 		require(path.resolve(routePath))(app);

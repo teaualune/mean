@@ -3,19 +3,19 @@
 /**
  * Module dependencies.
  */
-var users = require('../../app/controllers/users.server.controller'),
+var articlesPolicy = require('../../app/policies/articles.server.policy'),
 	articles = require('../../app/controllers/articles.server.controller');
 
 module.exports = function(app) {
 	// Article Routes
 	app.route('/articles')
-		.get(articles.list)
-		.post(users.requiresLogin, articles.create);
+		.get(articlesPolicy.isAllowed, articles.list)
+		.post(articlesPolicy.isAllowed, articles.create);
 	
 	app.route('/articles/:articleId')
 		.get(articles.read)
-		.put(users.requiresLogin, articles.hasAuthorization, articles.update)
-	    .delete(users.requiresLogin, articles.hasAuthorization, articles.delete);
+		.put(articlesPolicy.isAllowed, articles.update)
+	    .delete(articlesPolicy.isAllowed, articles.delete);
 
 	// Finish by binding the article middleware
 	app.param('articleId', articles.articleByID);
