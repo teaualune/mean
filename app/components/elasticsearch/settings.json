@@ -1,0 +1,53 @@
+{
+    "index_name": "App",
+    "host": "localhost",
+    "port": 9200,
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "default": {
+                    "tokenizer": "uax_url_email",
+                    "filter": [
+                        "trim",
+                        "lowercase",
+                        "asciifolding",
+                        "word_delimiter_1"
+                    ]
+                },
+                "autocomplete_index": {
+                    "type": "custom",
+                    "tokenizer": "autocomplete_ngram",
+                    "filter": [
+                        "trim",
+                        "lowercase",
+                        "asciifolding",
+                        "word_delimiter_1"
+                    ]
+                },
+                "autocomplete_search": {
+                    "type": "custom",
+                    "tokenizer": "keyword",
+                    "filter": [
+                        "trim",
+                        "lowercase",
+                        "asciifolding"
+                    ]
+                }
+            },
+            "filter": {
+                "word_delimiter_1": {
+                    "type": "word_delimiter",
+                    "preserve_original": true
+                }
+            },
+            "tokenizer": {
+                "autocomplete_ngram": {
+                    "type": "edgeNGram",
+                    "min_gram": 1,
+                    "max_gram": 50,
+                    "side": "front"
+                }
+            }
+        }
+    }
+}

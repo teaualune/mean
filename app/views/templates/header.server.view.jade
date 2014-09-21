@@ -1,0 +1,25 @@
+nav.header.navbar.navbar-default.navbar-fixed-top(data-ng-controller="HeaderCtrl")
+    .container
+        .navbar-header
+            button.navbar-toggle(type="button", data-toggle="collapse", data-target="#header-menu")
+                i.fa.fa-bars
+            a.navbar-brand(ui-sref="home") App
+        #header-menu.collapse.navbar-collapse(collapse="")
+            ul.nav.navbar-nav
+                li(ng-class="{active: is('about')}")
+                    a(ui-sref="about") About
+            ul.nav.navbar-nav.navbar-right(ng-hide="authentication.user")
+                li(ng-class="{active: is('signin')}")
+                    a(ui-sref="signin") Signin
+                li(ng-class="{active: is('signup')}")
+                    a(ui-sref="signup") Signup
+            ul.nav.navbar-nav.navbar-right(ng-show="authentication.user")
+                li.dropdown
+                    a.dropdown-toggle(href="#", data-toggle="dropdown")
+                        span(ng-bind="authentication.user.displayName")
+                        i.dropdown-icon.fa.fa-caret-down
+                    ul.dropdown-menu
+                        li
+                            a(ui-sref="profile") Profile
+                        li
+                            a(href="/auth/signout") Signout

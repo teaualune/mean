@@ -1,15 +1,25 @@
 {
-	"name": "meanjs",
-	"version": "0.3.2",
-	"description": "Fullstack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
-	"dependencies": {
-		"bootstrap": "~3",
-		"angular": "~1.2",
-		"angular-resource": "~1.2",
-		"angular-animate": "~1.2",
-		"angular-mocks": "~1.2",
-		"angular-bootstrap": "~0.11.0",
-		"angular-ui-utils": "~0.1.1",
-		"angular-ui-router": "~0.2.10" 
-	}
+    "name": "App",
+    "version": "0.3.2",
+    "description": "App",
+    "dependencies": {
+        "bootstrap": "~3",
+        "angular": "~1.2.24",
+        "angular-resource": "~1.2",
+        "angular-animate": "~1.2",
+        "angular-mocks": "~1.2",
+        "angular-bootstrap": "~0.11.0",
+        "angular-ui-utils": "~0.1.1",
+        "angular-ui-router": "~0.2.10",
+        "socket.io-client": "~1.0.6",
+        "angular-socket-io": "~0.6.0",
+        "lesshat": "~3.0.2",
+        "font-awesome": "~4.2.0",
+        "restangular": "~1.4.0",
+        "moment": "~2.8.3",
+        "angular-dragdrop-ganarajpr": "git@github.com:ganarajpr/angular-dragdrop.git#master",
+        "ng-tags-input": "~2.1.1",
+        "ngDialog": "~0.2.14",
+        "angular-loading-bar": "~0.5.2"
+    }
 }
